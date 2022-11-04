@@ -1,0 +1,41 @@
+#define _CRT_SECURE_NO_WARNINGS  
+#include <iostream>
+#include <string> //string.h
+using std::cout;
+
+class Cat {
+private: //생략가능
+	int age;
+	char name[20]; // A
+	//const char *name;    //B, 비추
+public:
+	int getAge();
+	const char* getName();
+	void setAge(int a);
+	void setName(const char* pName);
+};
+int Cat::getAge()
+{
+	return age;
+}
+void Cat::setAge(int a)
+{
+	age = a;
+}
+void Cat::setName(const char* pName)
+{
+	strcpy(name, pName); //A
+	//name=pName;   //B, 주소 대입
+}
+const char* Cat::getName()
+{
+	return name;
+}
+int main()
+{
+	Cat nabi;
+	nabi.setName("나비");
+	nabi.setAge(3); //입력
+	cout << nabi.getName() << " 나이는 " << nabi.getAge() << "살이다.";
+	return 0;
+}
